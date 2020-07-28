@@ -4,9 +4,6 @@ import datetime
 import gym
 import random
 import numpy as np
-from tensorflow.keras.layers import Dense,Dropout
-# from tflearn.layers.core import input_data,droput,fully_connected
-# from tflearn.layers.estimators import regression
 
 print('Creating Environment...')
 
@@ -14,15 +11,18 @@ print('Creating Environment...')
 env = gym.make('CartPole-v0')
 env.reset()
 
-lr = 0.001
-goal_steps = 500
-score_requirement = 70
-initial_games = 10000
+goal_steps = 1000
+score_requirement = 85
+initial_games = 100000
 
 training_data = []
+x_train = []
+y_train = []
 scores = []
 acc_scores = []
 
+print('Running observation...')
+print('(May take few minues)')
 for episode in range(initial_games):
 	score = 0
 	game_memory = []
@@ -52,15 +52,22 @@ for episode in range(initial_games):
 				output = [1,0]
 
 			# Append [observation,output]
-			training_data.append([data[0],output])
+			# training_data.append((data[0],output))
+			x_train.append(data[0])
+			y_train.append(output)
 
 	env.reset()
 	scores.append(score)
 
 # ----Outside Loop----#
 
-training_data_saved = np.array(training_data)
-np.save(f'training_data_{datetime.datetime.now().strftime("%m%d%Y-%H%M%S")}.npy',training_data_saved)
+# filename = f'training_data_{datetime.datetime.now().strftime("%m%d%Y-%H%M%S")}.npy'
+# filename = 'training_data.npy'
+with open('x_train.npy','wb') as file:
+	np.save(file,x_train)
+with open('y_train.npy','wb') as file:
+	np.save(file,y_train)
+
 env.close()
 
 print(f'All accepted score : {len(acc_scores)}')
