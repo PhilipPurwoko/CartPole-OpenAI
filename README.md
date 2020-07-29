@@ -10,6 +10,9 @@ A pole is attached by an un-actuated joint to a cart, which moves along a fricti
 * numpy
 * tensorflow
 
+# Game Objective
+Bertahan selama mungkin, seimbangkan tongkat dengan bergerak ke kanan atau kiri. Jangan sampai tongkat miring lebih dari 15 derajat atau papan bergerak lebih dari 2.4 unit dari titik tengah / titik awal
+
 # Skor Tinggi
 * Lama waktu bertahan : 14.258234024047852 detik
 * Skor rata - rata : 200.0
