@@ -146,8 +146,8 @@ def ai_plays(model):
 		print(f'Survive time : {survival_time} seconds')
 	print(f'Best survival time : {np.max(survival_scores)}')
 
-	print(f'Average accepted score : {np.mean(scores)}')
-	print(f'Median accepted score : {np.median(scores)}')
+	print(f'Average score : {np.mean(scores)}')
+	print(f'Median score : {np.median(scores)}')
 
 if __name__ == '__main__':
 	nn_model = neural_network_model()
